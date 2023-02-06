@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { IContacto } from 'src/app/models/contact.interface';
 
 @Component({
@@ -33,11 +34,26 @@ listaContactos: IContacto[] = [
 
 
 
-
-constructor() { }
+//Aqui vamos a hacer un ejemplo con una funcion para poder navegar, pasandole informacion a traves del estado
+constructor(private router: Router) { }
 
 ngOnInit(): void {
     
   }
 
+volverAHome(contacto: IContacto) {
+  
+  let navigationExtras: NavigationExtras = {
+    state: {
+      data: contacto
+    }
+  }
+
+  this.router.navigate(['home'], navigationExtras) //cuando navegamos a este ruta podemos pasarle los extras
 }
+
+}
+
+
+
+// 1:16

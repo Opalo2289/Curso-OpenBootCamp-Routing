@@ -1,8 +1,12 @@
 <h1>Home-Page</h1>
 <h3>Bienvenidos!</h3>
+<h4 *ngIf="contactoSeleccionado">Has seleccionado a: {{contactoSeleccionado.nombre}}</h4>
 
-<a routerLink="/login">Iniciar sesion</a>
+<a *ngIf="!token" routerLink="/login">Iniciar sesion</a>
 
 <button (click)="navegarAContacts()">
     Ver tus contactos
 </button>
+
+
+<!-- -1:16 OpenBootCamp --> 
