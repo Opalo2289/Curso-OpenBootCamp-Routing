@@ -6,6 +6,7 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 import { ContactDetailPageComponent } from './pages/contact-detail-page/contact-detail-page.component';
 import { ContactsPageComponent } from './pages/contacts-page/contacts-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -34,11 +35,13 @@ const routes: Routes = [
   },
   {
     path: 'contacts',
-    component: ContactsPageComponent
+    component: ContactsPageComponent,
+    canActivate: [ AuthGuard ] //se pueden poner mas si se han creado, dependiendo de su valor permitira navegar a la pagina o no.
   },
   {
     path: 'contacts/:id',
-    component: ContactDetailPageComponent
+    component: ContactDetailPageComponent,
+    canActivate: [ AuthGuard ]
   },
   {
     path: '**',

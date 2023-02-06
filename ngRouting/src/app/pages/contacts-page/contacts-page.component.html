@@ -5,7 +5,7 @@
 -->
 <div *ngFor="let contacto of listaContactos; let i=index">
 
-<div routerLink="contacts/{{contacto.id}}">
+<div routerLink="{{contacto.id}}">
     <h6>{{ contacto.nombre }}</h6>
 </div>
 

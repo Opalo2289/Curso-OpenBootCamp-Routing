@@ -20,9 +20,9 @@ constructor (private router: Router) { }
     
   }
 
-//Aqui vamos a hacer un evento que sera navegar de forma programatica. osea navegar a una ruta especifica
+//Aqui vamos a hacer un evento(handler) que sera navegar de forma programatica. osea navegar a una ruta especifica
   navegarAContacts(): void {
-    //this.router.navigate() //Aqui le decimos la ruta a la que queremos navegar
+    this.router.navigate(['contacts']); //Aqui le decimos la ruta a la que queremos navegar
   }
 
 }
