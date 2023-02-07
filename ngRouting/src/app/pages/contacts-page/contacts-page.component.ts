@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { IContacto } from 'src/app/models/contact.interface';
 
 @Component({
@@ -17,32 +17,42 @@ listaContactos: IContacto[] = [
    nombre: 'Diana',
    apellidos: 'Perdomo',
    email: '@DianaPerdomo',
+   sexo: 'hombre'
   },
   {
    id: 1,
    nombre: 'Heracio',
    apellidos: 'Angula',
    email: '@angula',
+   sexo: 'mujer'
   },
   {
     id: 2,
     nombre: 'Juan',
     apellidos: 'Vallejo',
     email: '@vallejo',
+    sexo: 'mujer'
   },  
 ]
 
 
 
 //Aqui vamos a hacer un ejemplo con una funcion para poder navegar, pasandole informacion a traves del estado
-constructor(private router: Router) { }
+constructor(private router: Router, private route: ActivatedRoute) { }
 
 ngOnInit(): void {
-    
+    //navegacion a traves de queryParams
+    //Despues de activar la route: ActivateRoute
+    //obtenemos los queryParams que estan en la homePage navegarAContacts()
+    this.route.queryParams.subscribe((params: any) => {
+
+      console.log('QueryParams', params.sexo)
+
+    })
   }
 
 volverAHome(contacto: IContacto) {
-  
+  //Navegacion a traves del estado
   let navigationExtras: NavigationExtras = {
     state: {
       data: contacto

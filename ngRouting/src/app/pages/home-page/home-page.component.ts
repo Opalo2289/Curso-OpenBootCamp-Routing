@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 /*
 *Se importa Router y se injecta en el constructor
-*Se elabora el metodo en este caso navegarAContacts()
+*Se elabora el metodo en este caso navegarAContacts(), incluye navegacion usando los estados.
 */
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { IContacto } from 'src/app/models/contact.interface';
 
 
@@ -34,7 +34,16 @@ constructor (private router: Router) { }
 
 //Aqui vamos a hacer un evento(handler) que sera navegar de forma programatica. osea navegar a una ruta especifica
   navegarAContacts(): void {
-    this.router.navigate(['contacts']); //Aqui le decimos la ruta a la que queremos navegar
+    //Aqui ademas haremos un proceso de navigationExtras, Parametros de consulta, hay que leerlos para ver si existen
+    //Como se pasa: 
+    //Como se lee:
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        sexo: 'todos' //Se realiza el filtro por todos los contactos, y al seleccionar en la vista me da el correcto
+      }
+    }
+
+    this.router.navigate(['contacts'], navigationExtras); //Aqui le decimos la ruta a la que queremos navegar, ademas se le añade los navigation extras
   }
 
 }
