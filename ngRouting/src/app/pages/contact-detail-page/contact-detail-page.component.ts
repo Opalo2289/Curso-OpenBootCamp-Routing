@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //Esto es para navehar al detalle de los contactos
 import { ActivatedRoute, Route } from '@angular/router';
+import { IContacto } from 'src/app/models/contact.interface';
 @Component({
   selector: 'app-contact-detail-page',
   templateUrl: './contact-detail-page.component.html',
@@ -10,7 +11,16 @@ export class ContactDetailPageComponent implements OnInit {
  
  
 id: any | undefined
+contacto: IContacto = {
 
+  id: 0,
+  nombre: '',
+  apellidos: '',
+  email: '',
+  sexo: ''
+}
+
+filtroPrevio: string = 'todos'
 
 
  constructor(private route: ActivatedRoute) { }
@@ -25,6 +35,14 @@ id: any | undefined
       }
     ); 
     //this.route.parent?.params //Esto es si quiesieramos acceder a parametros de una ruta superior |  
+      //vamos a leer tambien del [state] el contacto, creamos la variable contacto arriba y lo leemos usando el history
+      if(history.state.data){
+        this.contacto = history.state.data
+      }
+
+      if(history.state.filtro){
+        this.filtroPrevio = history.state.filtro
+      }
   }
 
 }

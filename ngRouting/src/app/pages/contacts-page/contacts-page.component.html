@@ -5,9 +5,17 @@
 -->
 <div *ngFor="let contacto of listaContactos; let i=index">
 
-<div routerLink="{{contacto.id}}">
-    <h6>{{ contacto.nombre }} <!--es posible utilizar esta forma state="contacto" y no tener que ir al OnInit de la home page--></h6>
-    <button (click)="volverAHome(contacto)">seleccionar amigo invisible</button> <!--Desde aqui nos vamos a el ngOnInit de la home page-->
+    <div routerLink="{{contacto.id}}" [state]="{data: contacto, filtro: filtroSexo}"> <!--El state es para navegar al detalle, vamos a detail.contacts-->
+        <h6 class="contacto">{{ contacto.nombre }} <!--es posible utilizar esta forma state="contacto" y no tener que ir al OnInit de la home page--></h6>
+        <button (click)="volverAHome(contacto)">seleccionar amigo invisible</button> <!--Desde aqui nos vamos a el ngOnInit de la home page-->
+    </div>
 </div>
 
-</div>
+<ng-container *ngIf="filtroSexo == 'hombre' || filtroSexo == 'mujer';else completo">
+    <p>Mostrando amigos filtrada por "{{filtroSexo}}"</p>
+</ng-container>
+<ng-template #completo>
+    <p>Mostrando lista de contactos completa</p>
+</ng-template>
+
+<a routerLink="/home" [queryParams]="{sexo: filtroSexo}">Volver</a>

@@ -7,20 +7,20 @@ export const LISTA_CONTACTOS: IContacto[] = [
          nombre: 'Diana',
          apellidos: 'Perdomo',
          email: '@DianaPerdomo',
-         sexo: 'hombre'
+         sexo: 'mujer'
         },
         {
          id: 1,
          nombre: 'Heracio',
          apellidos: 'Angula',
          email: '@angula',
-         sexo: 'mujer'
+         sexo: 'hombre'
         },
         {
           id: 2,
           nombre: 'Juan',
           apellidos: 'Vallejo',
           email: '@vallejo',
-          sexo: 'mujer'
+          sexo: 'hombre'
         },  
 ]
