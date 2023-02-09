@@ -15,7 +15,7 @@ export class AuthService {
     let body = {
       email: email,
       password: password
-    }
+    } //De aqui nos vamos a la login.page
 
     return this.http.post('https://reqres.in/api/login', body)
   }

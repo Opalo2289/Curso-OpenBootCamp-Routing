@@ -31,7 +31,8 @@ const routes: Routes = [
         path: 'hijo',
         component: HomePageComponent
       }
-    ]
+    ],
+    canActivate: [AuthGuard]
   },
   {
     path: 'contacts',
