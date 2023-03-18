@@ -1,0 +1,46 @@
+<!-- montamos el login form haciendo uso de componentes Material -->
+<mat-card>
+  <!-- header -->
+  <mat-card-header>
+    <mat-card-title>
+      <h3>Login</h3>
+    </mat-card-title>
+
+    <mat-card-subtitle>
+      Accede a tu cuenta
+    </mat-card-subtitle>
+  </mat-card-header>
+
+
+  <!-- contenido de la targeta -->
+  <mat-card-content>
+    <!-- formulario login -->
+    <form [formGroup]="loginForm" (submit)="submitLogin()">
+      <!-- email -->
+      <mat-form-field>
+        <input matInput placeholder="" formControlName="email" style="border: solid rgba(128, 128, 128, 0.355);">
+        <mat-error *ngIf="email?.errors?.['email'] && email?.touched">
+          El campo email es obligatorio
+        </mat-error>
+        <!-- <mat-error *ngIf="email?.errors?.['email'] && email?.touched">
+          El formato del email no es correcto
+        </mat-error> -->
+      </mat-form-field><br><br>
+        <!-- password -->
+        <mat-form-field>
+          <input type="password" matInput placeholder="" formControlName="password" style="border: solid rgba(128, 128, 128, 0.238);">
+          <mat-error *ngIf="email?.errors?.['required'] && email?.touched" style="color: brown;">
+            El campo password es obligatorio
+          </mat-error> 
+        </mat-form-field><br><br>
+        <!-- boton para hacer submit -->
+        <!-- deshabilitado si el formulario del login es invalido -->
+        <button type="submit" mat-raised-button style="background-color: rgba(0, 0, 255, 0.837); color: aliceblue;" [disabled]="loginForm.invalid">
+          Login
+        </button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+
+<!-- video -10:30 openBootcamp -->
